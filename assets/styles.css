@@ -1,2 +1,92 @@
 :root {
+  --clr-black: #141414;
+  --clr-red: #e50913;
+  --clr-blue: #73b6ff;
+  --clr-grey: #f3f3f3;
+  --clr-drk-grey: #e0e0e0;
 }
+
+/* General */
+body,
+html {
+  background-color: var(--clr-black);
+  color: var(--clr-drk-grey);
+}
+
+/* header */
+header.container-fluid {
+  background-color: var(--clr-black);
+  margin-top: 1rem;
+  padding: 0;
+}
+.top-logo {
+  height: 3rem;
+  margin-bottom: 2rem;
+}
+
+.top-logo img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.info-top {
+  padding-inline: 15px;
+  height: 3rem;
+  position: sticky;
+  top: 0;
+}
+
+.dropdown .btn {
+  color: var(--clr-grey);
+  border: 1px solid var(--clr-grey);
+  border-radius: 0;
+  word-spacing: 2rem;
+}
+
+.top-icons {
+  height: 100%;
+  font-size: 1.5rem;
+}
+
+.top-icons i,
+.top-icons svg {
+  border: 1px solid var(--clr-grey);
+  height: 3rem;
+  width: 3rem;
+  padding: 10px;
+}
+
+/* main */
+.carousel-control-prev {
+  left: -2rem;
+}
+
+.carousel-control-next {
+  right: -2rem;
+}
+
+section .row {
+  height: 7rem;
+}
+
+section .col {
+  height: 100%;
+}
+
+.card {
+  height: 100%;
+  border: none;
+  overflow: hidden;
+}
+
+.card-img-top {
+  height: 100%;
+  object-fit: cover;
+}
+
+.no-wrap {
+  overflow-wrap: normal;
+  flex-wrap: nowrap;
+}
+
+/* footer */
