@@ -18,13 +18,76 @@
     <link rel="stylesheet" href="/assets/styles.css" />
   </head>
 
-  <body class="mx-5">
+  <body>
     <header class="container-fluid">
-      <div class="top-logo">
-        <img src="/assets/pictures/Netflix_Logo.png" alt="netflix logo" />
+      <div class="nav-container row mb-3">
+        <div class="top-logo">
+          <img src="/assets/pictures/Netflix_Logo.png" alt="netflix logo" />
+        </div>
+        <nav class="navbar navbar-expand-lg justify-content-end">
+          <button
+            class="navbar-toggler dropdown-toggle"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span>Browse</span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="#"
+                  >TV Shows <span class="sr-only">(current)</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Movies</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">New & Popular </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">My List </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Browse by Languages</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <div class="dropleft ml-auto">
+          <button
+            class="search-btn btn dropdown-toggle my-2 my-sm-0"
+            type="button"
+            data-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="bi bi-search"></i>
+          </button>
+          <div class="dropdown-menu">
+            <input
+              class="form-control dropdown-item"
+              type="search"
+              placeholder="Titles, people, genres"
+              aria-label="Search"
+            />
+          </div>
+        </div>
+        <div class="bell-symbol mr-2"><i class="bi bi-bell"></i></div>
+        <div class="account-symbol rounded">
+          <img src="/assets/pictures/penguin-logo.jpg" alt="penguin logo" />
+        </div>
       </div>
+
       <div class="info-top row">
-        <div class="h2 col-3">TV Shows</div>
+        <h2 class="col-4">TV Shows</h2>
         <div class="dropdown col-2">
           <button
             class="btn dropdown-toggle ml-3"
@@ -40,8 +103,7 @@
             <a class="dropdown-item" href="#">Something else here</a>
           </div>
         </div>
-        <div class="col-5"></div>
-        <div class="top-icons col-2 d-flex align-items-center">
+        <div class="top-icons col-2 d-flex align-items-center ml-auto">
           <i class="bi bi-filter-left"></i>
           <svg
             width="24"
@@ -61,10 +123,10 @@
         </div>
       </div>
     </header>
-    <main>
+    <main class="mx-5">
       <section class="container-fluid trending-container my-5">
         <h5 class="mb-3">Trending Now</h5>
-        <div id="carouselTrending" class="carousel slide" data-ride="carousel">
+        <div id="carouselTrending" class="carousel slide" data-interval="false">
           <div class="carousel-inner">
             <div class="carousel-item active">
               <div
@@ -267,7 +329,7 @@
         <div
           id="carouselWatchAgain"
           class="carousel slide"
-          data-ride="carousel"
+          data-interval="false"
         >
           <div class="carousel-inner">
             <div class="carousel-item active">
@@ -418,7 +480,7 @@
         <div
           id="carouselNewRelease"
           class="carousel slide"
-          data-ride="carousel"
+          data-interval="false"
         >
           <div class="carousel-inner">
             <div class="carousel-item active">
@@ -564,7 +626,7 @@
         </div>
       </section>
     </main>
-    <footer class="container-fluid">
+    <footer class="container">
       <div class="icon-container row">
         <i class="bi bi-facebook"></i>
         <i class="bi bi-instagram"></i>
@@ -573,29 +635,47 @@
       </div>
       <div class="footer-links row row-cols-2">
         <div class="row">
-          <ul class="col-12 col-md-6">
-            <li><a href="#" class="link">Audio and Subtitles</a></li>
-            <li><a href="#" class="link">Media Center</a></li>
-            <li><a href="#" class="link">Privacy</a></li>
-            <li><a href="#" class="link">Contact Us</a></li>
+          <ul class="footer-list col-12 col-md-6">
+            <li class="bottom-link">
+              <a href="#" class="link">Audio and Subtitles</a>
+            </li>
+            <li class="bottom-link">
+              <a href="#" class="link">Media Center</a>
+            </li>
+            <li class="bottom-link"><a href="#" class="link">Privacy</a></li>
+            <li class="bottom-link"><a href="#" class="link">Contact Us</a></li>
           </ul>
-          <ul class="col-12 col-md-6">
-            <li><a href="#" class="link">Audio and Subtitles</a></li>
-            <li><a href="#" class="link">Media Center</a></li>
-            <li><a href="#" class="link">Privacy</a></li>
+          <ul class="footer-list col-12 col-md-6">
+            <li class="bottom-link">
+              <a href="#" class="link">Audio Description</a>
+            </li>
+            <li class="bottom-link">
+              <a href="#" class="link">Investor Relations</a>
+            </li>
+            <li class="bottom-link">
+              <a href="#" class="link">Legal Notices</a>
+            </li>
           </ul>
         </div>
 
         <div class="row">
-          <ul class="col-12 col-md-6">
-            <li><a href="#" class="link">Audio and Subtitles</a></li>
-            <li><a href="#" class="link">Media Center</a></li>
-            <li><a href="#" class="link">Privacy</a></li>
+          <ul class="footer-list col-12 col-md-6">
+            <li class="bottom-link">
+              <a href="#" class="link">Help Center</a>
+            </li>
+            <li class="bottom-link"><a href="#" class="link">Jobs</a></li>
+            <li class="bottom-link">
+              <a href="#" class="link">Cookie Preferences</a>
+            </li>
           </ul>
-          <ul class="col-12 col-md-6">
-            <li><a href="#" class="link">Audio and Subtitles</a></li>
-            <li><a href="#" class="link">Media Center</a></li>
-            <li><a href="#" class="link">Privacy</a></li>
+          <ul class="footer-list col-12 col-md-6">
+            <li class="bottom-link"><a href="#" class="link">Gift Cards</a></li>
+            <li class="bottom-link">
+              <a href="#" class="link">Terms of Use</a>
+            </li>
+            <li class="bottom-link">
+              <a href="#" class="link">Corporate Information</a>
+            </li>
           </ul>
         </div>
       </div>

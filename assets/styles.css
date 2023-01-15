@@ -1,5 +1,5 @@
 :root {
-  --clr-black: #141414;
+  --clr-black: #202020;
   --clr-red: #e50913;
   --clr-blue: #73b6ff;
   --clr-grey: #f3f3f3;
@@ -15,18 +15,80 @@ html {
 
 /* header */
 header.container-fluid {
-  background-color: var(--clr-black);
-  margin-top: 1rem;
-  padding: 0;
+  background-image: linear-gradient(to bottom, #060606, var(--clr-black));
+  padding-top: 1rem;
+  padding-inline: 3rem;
 }
+
+.nav-container {
+  height: 2rem;
+}
+
 .top-logo {
-  height: 3rem;
-  margin-bottom: 2rem;
+  height: 2rem;
+  margin-left: 1.2rem;
 }
 
 .top-logo img {
   height: 100%;
   object-fit: cover;
+}
+
+.navbar-toggler {
+  color: var(--clr-drk-grey);
+}
+
+.search-btn.dropdown-toggle.btn {
+  border: none;
+  font-size: 15px;
+  background: none;
+}
+
+.dropdown-item {
+  font-size: 0.7rem;
+  padding: 0.5rem;
+  height: 0.4rem;
+}
+
+.dropleft .search-btn::before {
+  display: none;
+}
+
+#navbarSupportedContent ul {
+  text-align: center;
+  position: absolute;
+  z-index: 1;
+  width: 32rem;
+}
+
+@media screen and (max-width: 992px) {
+  #navbarSupportedContent ul {
+    background-color: rgba(0, 0, 0, 0.739);
+    width: 10rem;
+  }
+}
+
+.nav-item .nav-link {
+  color: var(--clr-drk-grey);
+  font-size: 0.8rem;
+}
+
+.nav-item.active .nav-link {
+  font-weight: bold;
+}
+
+.bell-symbol {
+  font-size: 1.4rem;
+}
+
+.account-symbol {
+  object-fit: cover;
+  overflow: hidden;
+  height: 100%;
+}
+
+.account-symbol img {
+  height: 100%;
 }
 
 .info-top {
@@ -38,9 +100,22 @@ header.container-fluid {
 
 .dropdown .btn {
   color: var(--clr-grey);
+  background-color: black;
   border: 1px solid var(--clr-grey);
   border-radius: 0;
-  word-spacing: 2rem;
+  word-spacing: 1.8rem;
+  font-size: 0.7rem;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.dropleft .btn {
+  color: var(--clr-grey);
+  background-color: black;
+}
+
+.dropdown .btn:hover {
+  background-color: #505050;
 }
 
 .top-icons {
@@ -66,7 +141,7 @@ header.container-fluid {
 }
 
 section .row {
-  height: 7rem;
+  min-height: 7rem;
 }
 
 section .col {
@@ -90,3 +165,27 @@ section .col {
 }
 
 /* footer */
+
+.icon-container i {
+  margin-right: 1rem;
+  font-size: 2rem;
+}
+
+footer.container {
+  margin: 20px auto 0;
+  max-width: 980px;
+}
+
+.bottom-link a {
+  color: #505050;
+}
+
+.bottom-link {
+  list-style: none;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer-list {
+  margin-bottom: 0;
+}
