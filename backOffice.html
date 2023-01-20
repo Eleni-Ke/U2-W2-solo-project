@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Netflix Clone</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+
+  <body>
+    <header class="container-fluid">
+      <div class="nav-container row mb-3">
+        <div class="top-logo">
+          <img src="/assets/pictures/Netflix_Logo.png" alt="netflix logo" />
+        </div>
+        <nav class="navbar navbar-expand-lg justify-content-end">
+          <button
+            class="navbar-toggler dropdown-toggle"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span>Browse</span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./index.html">TV Shows</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Movies</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">New & Popular </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">My List </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Browse by Languages</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="#"
+                  >Backoffice <span class="sr-only">(current)</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <div class="dropleft ml-auto">
+          <button
+            class="search-btn btn dropdown-toggle my-2 my-sm-0"
+            type="button"
+            data-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="bi bi-search"></i>
+          </button>
+          <div class="dropdown-menu">
+            <input
+              class="form-control dropdown-item"
+              type="search"
+              placeholder="Titles, people, genres"
+              aria-label="Search"
+            />
+          </div>
+        </div>
+        <div class="bell-symbol mr-2"><i class="bi bi-bell"></i></div>
+        <div class="account-symbol rounded">
+          <img src="/assets/pictures/penguin-logo.jpg" alt="penguin logo" />
+        </div>
+      </div>
+
+      <div class="info-top row">
+        <h2 class="col-4">TV Shows</h2>
+        <div class="dropdown col-2">
+          <button
+            class="btn dropdown-toggle ml-3"
+            type="button"
+            data-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Genres
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </div>
+        <div class="top-icons col-2 d-flex align-items-center ml-auto">
+          <i class="bi bi-filter-left"></i>
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="svg-icon svg-icon-grid"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M1 3C0.447715 3 0 3.44772 0 4V10C0 10.5523 0.447715 11 1 11H10C10.5523 11 11 10.5523 11 10V4C11 3.44772 10.5523 3 10 3H1ZM1 13C0.447715 13 0 13.4477 0 14V20C0 20.5523 0.447715 21 1 21H10C10.5523 21 11 20.5523 11 20V14C11 13.4477 10.5523 13 10 13H1ZM13 4C13 3.44772 13.4477 3 14 3H23C23.5523 3 24 3.44772 24 4V10C24 10.5523 23.5523 11 23 11H14C13.4477 11 13 10.5523 13 10V4ZM14 13C13.4477 13 13 13.4477 13 14V20C13 20.5523 13.4477 21 14 21H23C23.5523 21 24 20.5523 24 20V14C24 13.4477 23.5523 13 23 13H14Z"
+              fill="currentColor"
+            ></path>
+          </svg>
+        </div>
+      </div>
+    </header>
+    <main class="mx-5">
+      <section
+        class="addMovieContainer container d-flex justify-content-center"
+      >
+        <div class="row">
+          <div class="dropdown">
+            <button
+              class="btn dropdown-toggle ml-3"
+              type="button"
+              data-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Add a Movie here:
+            </button>
+            <form class="dropdown-menu" onsubmit="addMovie(); return false">
+              <div class="form-group dropdown-item">
+                <label for="movieName">Movie Name:</label>
+                <input
+                  type="text"
+                  required
+                  class="form-control"
+                  id="movieName"
+                  placeholder="Name"
+                />
+              </div>
+              <div class="form-group dropdown-item">
+                <label for="movieDescription">Description:</label>
+                <textarea
+                  class="form-control"
+                  required
+                  id="movieDescription"
+                  rows="3"
+                ></textarea>
+              </div>
+              <div class="form-group dropdown-item dropdown">
+                <label for="movieCategory">Category:</label>
+                <select
+                  name="category"
+                  class="form-control"
+                  id="movieCategory"
+                  required
+                >
+                  <option value="">--Please choose an option--</option>
+                  <option value="horror">Horror</option>
+                  <option value="comedy">Comedy</option>
+                  <option value="drama">Drama</option>
+                </select>
+              </div>
+              <div class="form-group dropdown-item">
+                <label for="movieImageUrl">Movie Image Link:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="movieImageUrl"
+                  required
+                />
+              </div>
+              <button class="btn btn-primary mx-auto">Save Movie</button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <section class="container justify-content-center">
+        <h5 class="row mt-5 d-flex justify-content-center">
+          You can modify or delete this movie here:
+        </h5>
+        <div class="row justify-content-center" id="movieToEdit"></div>
+      </section>
+    </main>
+    <footer class="container">
+      <div class="icon-container row">
+        <i class="bi bi-facebook"></i>
+        <i class="bi bi-instagram"></i>
+        <i class="bi bi-twitter"></i>
+        <i class="bi bi-youtube"></i>
+      </div>
+      <div class="footer-links row row-cols-2">
+        <div class="row">
+          <ul class="footer-list col-12 col-md-6">
+            <li class="bottom-link">
+              <a href="#" class="link">Audio and Subtitles</a>
+            </li>
+            <li class="bottom-link">
+              <a href="#" class="link">Media Center</a>
+            </li>
+            <li class="bottom-link"><a href="#" class="link">Privacy</a></li>
+            <li class="bottom-link"><a href="#" class="link">Contact Us</a></li>
+          </ul>
+          <ul class="footer-list col-12 col-md-6">
+            <li class="bottom-link">
+              <a href="#" class="link">Audio Description</a>
+            </li>
+            <li class="bottom-link">
+              <a href="#" class="link">Investor Relations</a>
+            </li>
+            <li class="bottom-link">
+              <a href="#" class="link">Legal Notices</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="row">
+          <ul class="footer-list col-12 col-md-6">
+            <li class="bottom-link">
+              <a href="#" class="link">Help Center</a>
+            </li>
+            <li class="bottom-link"><a href="#" class="link">Jobs</a></li>
+            <li class="bottom-link">
+              <a href="#" class="link">Cookie Preferences</a>
+            </li>
+          </ul>
+          <ul class="footer-list col-12 col-md-6">
+            <li class="bottom-link"><a href="#" class="link">Gift Cards</a></li>
+            <li class="bottom-link">
+              <a href="#" class="link">Terms of Use</a>
+            </li>
+            <li class="bottom-link">
+              <a href="#" class="link">Corporate Information</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="service-containter"></div>
+      <div class="copyright-container">
+        <i class="bi bi-c-circle"></i> 1997-2019 Netflix, inc. {i-dz7tuzg7}
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./assets/backOffice.js"></script>
+  </body>
+</html>

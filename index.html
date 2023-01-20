@@ -59,6 +59,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">Browse by Languages</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./backOffice.html">Backoffice</a>
+              </li>
             </ul>
           </div>
         </nav>
@@ -98,9 +101,15 @@
             Genres
           </button>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <button class="btn dropdown-item" onclick="getMovies('horror')">
+              Horror
+            </button>
+            <button class="btn dropdown-item" onclick="getMovies('comedy')">
+              Comedy
+            </button>
+            <button class="btn dropdown-item" onclick="getMovies('drama')">
+              Drama
+            </button>
           </div>
         </div>
         <div class="top-icons col-2 d-flex align-items-center ml-auto">
@@ -124,6 +133,43 @@
       </div>
     </header>
     <main class="mx-5">
+      <section class="container-fluid user-container my-5">
+        <h5 class="mb-3" id="userShowGenre">User shows</h5>
+        <div id="carouselUser" class="carousel slide" data-interval="false">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div
+                class="row row-cols-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 no-gutters no-wrap"
+                id="userMovieRow"
+              ></div>
+            </div>
+            <div class="carousel-item">
+              <div
+                class="row row-cols-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 no-gutters no-wrap"
+              ></div>
+            </div>
+          </div>
+
+          <button
+            class="carousel-control-prev justify-content-start"
+            type="button"
+            data-target="#"
+            data-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next justify-content-end"
+            type="button"
+            data-target="#"
+            data-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </button>
+        </div>
+      </section>
       <section class="container-fluid trending-container my-5">
         <h5 class="mb-3">Trending Now</h5>
         <div id="carouselTrending" class="carousel slide" data-interval="false">
@@ -183,60 +229,6 @@
                       src="/assets/pictures/himym.jpeg"
                       class="card-img-top"
                       alt="How I met your Mother"
-                    />
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card">
-                    <img
-                      src="/assets/pictures/legend-of-korra.jpg"
-                      class="card-img-top"
-                      alt="Legend of Korra"
-                    />
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card">
-                    <img
-                      src="/assets/pictures/orange-is-the-new-black.jpeg"
-                      class="card-img-top"
-                      alt="Orange is the new black"
-                    />
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card">
-                    <img
-                      src="/assets/pictures/queens_gambit.jpeg"
-                      class="card-img-top"
-                      alt="The queens gambit"
-                    />
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card">
-                    <img
-                      src="/assets/pictures/witcher.jpeg"
-                      class="card-img-top"
-                      alt="Witcher"
-                    />
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card">
-                    <img
-                      src="/assets/pictures/ahs.webp"
-                      class="card-img-top"
-                      alt="American Horror Story"
-                    />
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card">
-                    <img
-                      src="/assets/pictures/jane-the-virgin.jpeg"
-                      class="card-img-top"
-                      alt="Jane the virgin"
                     />
                   </div>
                 </div>
@@ -695,5 +687,6 @@
       integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
       crossorigin="anonymous"
     ></script>
+    <script src="./assets/script.js"></script>
   </body>
 </html>
