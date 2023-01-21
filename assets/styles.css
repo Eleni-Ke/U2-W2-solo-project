@@ -223,6 +223,15 @@ footer.container {
   margin-left: 1rem;
 }
 
+.genreRowTitle {
+  border-top: 1px solid var(--clr-black);
+}
+
+#allMoviesContainer {
+  background-color: var(--clr-drk-grey);
+  color: var(--clr-black);
+}
+
 #allMoviesContainer .movieToEditImg {
   height: 10rem;
 }
