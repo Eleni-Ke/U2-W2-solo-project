@@ -222,3 +222,7 @@ footer.container {
   height: 2.5rem;
   margin-left: 1rem;
 }
+
+#allMoviesContainer .movieToEditImg {
+  height: 10rem;
+}

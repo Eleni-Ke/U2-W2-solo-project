@@ -2,7 +2,7 @@ const url = "https://striveschool-api.herokuapp.com/api/movies/";
 
 const par = new URLSearchParams(location.search);
 const id = par.get("id");
-console.log(id);
+let genreArr = [];
 const optionsGet = {
   method: "GET",
   headers: {
@@ -13,47 +13,66 @@ const optionsGet = {
 
 window.onload = async () => {
   try {
-    let containerNode = document.querySelector("#movieToEdit");
-    if (id !== null) {
-      console.log("id recognised");
-      getMovieToEdit();
-    } else {
-      containerNode.innerHTML = `
-      <div class="noMovieMessage row  mt-5 d-flex justify-content-center align-items-center p-3">
-        <p>Please go back and choose a movie to edit.</p>
-        <a class="btn link" id="backToMenu" href="./index.html">To Menu</a>
-      </div>`;
-    }
+    let response = await fetch(url, optionsGet);
+    genreArr = await response.json();
+    genreArr.forEach(async (genre) => {
+      let res = await fetch(url + genre, optionsGet);
+      let movieArr = await res.json();
+      displayMovies(genre, movieArr);
+    });
   } catch (error) {
     console.log(error);
   }
 };
 
-const getMovieToEdit = async () => {
+const displayMovies = async (genre, arr) => {
   try {
-    const response = await fetch(url + "movies" / +id, optionsGet);
-    const movieToEdit = await response.json();
-    console.log(movieToEdit), showMovieToEdit(movieToEdit);
+    const moviesContainer = document.querySelector("#allMoviesContainer");
+    moviesContainer.innerHTML += `
+    <h5 class="row mt-5 d-flex justify-content-center genreRow">${genre}</h5>`;
+    arr.forEach((movie) => {
+      moviesContainer.innerHTML += `
+      <div class="row justify-content-center">
+          <img src="${movie.imageUrl}" alt="picture of movie" class="col-2 movieToEditImg" />
+          <h6 class="col">${movie.name}</h6>
+          <button class="btn btn-light col" onclick="editMovie">Edit</button>
+          <button class="btn btn-light col" onclick="deleteMovie">
+            Delete
+          </button>
+        </div>`;
+    });
   } catch (error) {
     console.log(error);
   }
 };
 
-const showMovieToEdit = (movie) => {
-  let containerNode = document.querySelector("#movieToEdit");
-  const { name, description, category, imageUrl } = movie;
-  containerNode.innerHTML = `
-    <div class="col card">
-        <img src="${imageUrl}" class="card-img-top" alt="${name}">
-        <div class="card-body">
-            <h5 class="card-title">${name}</h5>
-            <p class="card-text">${category}</p>
-            <p class="card-text">${description}</p>
-            <button class="btn btn-warning" onclick="">Edit</button>
-            <button class="btn btn-danger" onclick="deleteMovie()">Delete</button>
-        </div>
-    </div>`;
-};
+// window.onload = async () => {
+//   try {
+//     let containerNode = document.querySelector("#movieToEdit");
+//     if (id !== null) {
+//       console.log("id recognised");
+//       getMovieToEdit();
+//     } else {
+//       containerNode.innerHTML = `
+//       <div class="noMovieMessage row  mt-5 d-flex justify-content-center align-items-center p-3">
+//         <p>Please go back and choose a movie to edit.</p>
+//         <a class="btn link" id="backToMenu" href="./index.html">To Menu</a>
+//       </div>`;
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
+// const getMovieToEdit = async () => {
+//   try {
+//     const response = await fetch(url + "movies" / +id, optionsGet);
+//     const movieToEdit = await response.json();
+//     console.log(movieToEdit), showMovieToEdit(movieToEdit);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 const addMovie = async () => {
   try {
