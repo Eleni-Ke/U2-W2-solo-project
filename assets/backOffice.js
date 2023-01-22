@@ -14,7 +14,7 @@ const optionsGet = {
 window.onload = async () => {
   try {
     if (id !== null) {
-      console.log(id);
+      console.log("This is the id:" + id);
       showEditMovieSection();
     } else {
       getMoviesAndGenre();
@@ -30,11 +30,11 @@ const getMoviesAndGenre = async () => {
   try {
     let response = await fetch(url, optionsGet);
     genreArr = await response.json();
-    console.log(genreArr);
+    console.log("These are the genre:" + genreArr);
     genreArr.forEach(async (genre) => {
       let res = await fetch(url + genre, optionsGet);
       let movieArr = await res.json();
-      console.log(movieArr);
+
       displayMovies(genre, movieArr);
     });
   } catch (error) {
@@ -43,31 +43,32 @@ const getMoviesAndGenre = async () => {
 };
 
 const displayMovies = async (genre, arr) => {
-  try {
-    const moviesContainer = document.querySelector("#allMoviesContainer");
-    moviesContainer.innerHTML += `
-    <h3 class="row mt-5 d-flex justify-content-center genreRowTitle">${genre}</h3>`;
-    arr.forEach((movie) => {
+  if (genre !== "") {
+    try {
+      const moviesContainer = document.querySelector("#allMoviesContainer");
       moviesContainer.innerHTML += `
-      <div class="row justify-content-center">
-          <img src="${movie.imageUrl}" alt="picture of movie" class="col-2 movieToEditImg" />
-          <h6 class="col-4">${movie.name}</h6>
-          <div class="col-3 offset-2 btn-section">
-            <a class="btn btn-light" href="./backOffice.html?id=${movie._id}" >Edit</a>
-            <button class="btn btn-light" onclick="deleteMovie('${movie._id}' )">
-              Delete
-            </button>
-          </div>
+      <h3 class="row mt-5 d-flex justify-content-center genreRowTitle">${genre}</h3>`;
+      arr.forEach((movie) => {
+        console.log("These are the ids:", movie._id, movie.name);
+        moviesContainer.innerHTML += `
+        <div class="row justify-content-center">
+        <img src="${movie.imageUrl}" alt="picture of movie" class="col-2 movieToEditImg" />
+        <h6 class="col-4">${movie.name}</h6>
+        <div class="col-3 offset-2 btn-section">
+        <a class="btn btn-light" href="./backOffice.html?id=${movie._id}" >Edit</a>
+        <button class="btn btn-light" onclick="deleteMovie('${movie._id}' )">
+        Delete
+        </button>
+        </div>
         </div>`;
-    });
-  } catch (error) {
-    console.log(error);
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 };
 
 const deleteMovie = async (id) => {
-  console.log(id);
-
   try {
     let res = await fetch(url + id, {
       method: "DELETE",
@@ -129,19 +130,19 @@ const showEditMovieSection = async () => {
                 <label for="movieToEditName">Movie Name:</label>
                 <input
                   type="text"
-                  required
                   class="form-control"
                   id="movieToEditName"
                   placeholder="Name"
+                  required
                 />
               </div>
               <div class="form-group ">
                 <label for="movieToEditDescription">Description:</label>
                 <textarea
                   class="form-control"
-                  required
                   id="movieToEditDescription"
                   rows="3"
+                  required
                 ></textarea>
               </div>
               <div class="form-group  dropdown">
@@ -172,6 +173,34 @@ const showEditMovieSection = async () => {
               </div>
               <button class="btn btn-primary mx-auto">Save Movie</button>
             </form>`;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const editMovie = async () => {
+  try {
+    const eventToPut = {
+      name: document.querySelector("#movieToEditName").value,
+      description: document.querySelector("#movieToEditDescription").value,
+      category: document.querySelector("#movieToEditCategory").value,
+      imageUrl: document.querySelector("#movieToEditImageUrl").value,
+    };
+    let res = await fetch(url + id, {
+      method: "PUT",
+      body: JSON.stringify(eventToPut),
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M5NDRlM2U3MzczODAwMTUzNzQzYzAiLCJpYXQiOjE2NzQyMDc3MzMsImV4cCI6MTY3NTQxNzMzM30.to8xw5276ON8nubNuoIbjjMKcCf0_u7YArqoOSEGGDo",
+        "content-type": "application/json",
+      },
+    });
+    if (res.ok) {
+      alert("success!");
+      window.location.href = "./index.html";
+    } else {
+      alert("Oh no something went wrong...");
+    }
   } catch (error) {
     console.log(error);
   }

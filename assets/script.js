@@ -26,10 +26,12 @@ window.onload = async () => {
 const showGenres = async (arr) => {
   const genreDropdown = document.querySelector("#genreDropdown");
   arr.forEach((genre) => {
-    genreDropdown.innerHTML += `
+    if (genre !== "") {
+      genreDropdown.innerHTML += `
       <button class="btn dropdown-item" onclick="getMovies('${genre}')">
-        ${genre}
+      ${genre}
       </button>`;
+    }
   });
 };
 
@@ -49,21 +51,23 @@ const showUserMovies = async (movies, genre) => {
     const genreTitle = document.querySelector("#userShowGenre");
     genreTitle.innerHTML = `<h5>${genre}</h5>`;
     row.innerHTML = "";
-    movies.forEach((movie) => {
-      row.innerHTML += `
+    if (genre !== "") {
+      movies.forEach((movie) => {
+        row.innerHTML += `
         <div class="col">
-            <div class="card">
-                <img src="${movie.imageUrl}" alt="${movie.name}"
-                />
-                <div class="card-body">
-                    <p>${movie.description}</p>
-                </div>
-                <div class="card-footer">
-                <a href="./backOffice.html" class="btn btn-primary goToBackOffice">More</a>
-                </div>
-            </div>
+        <div class="card">
+        <img src="${movie.imageUrl}" alt="${movie.name}"
+        />
+        <div class="card-body">
+        <p>${movie.description}</p>
+        </div>
+        <div class="card-footer">
+        <a href="./backOffice.html" class="btn btn-primary goToBackOffice">More</a>
+        </div>
+        </div>
         </div>`;
-    });
+      });
+    }
   } catch (error) {
     console.log(error);
   }
