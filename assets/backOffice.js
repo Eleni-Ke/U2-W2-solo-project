@@ -13,6 +13,21 @@ const optionsGet = {
 
 window.onload = async () => {
   try {
+    if (id !== null) {
+      console.log(id);
+      showEditMovieSection();
+    } else {
+      getMoviesAndGenre();
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// list of movies
+
+const getMoviesAndGenre = async () => {
+  try {
     let response = await fetch(url, optionsGet);
     genreArr = await response.json();
     console.log(genreArr);
@@ -38,7 +53,7 @@ const displayMovies = async (genre, arr) => {
           <img src="${movie.imageUrl}" alt="picture of movie" class="col-2 movieToEditImg" />
           <h6 class="col-4">${movie.name}</h6>
           <div class="col-3 offset-2 btn-section">
-            <button class="btn btn-light" onclick="editMovie()">Edit</button>
+            <a class="btn btn-light" href="./backOffice.html?id=${movie._id}" >Edit</a>
             <button class="btn btn-light" onclick="deleteMovie('${movie._id}' )">
               Delete
             </button>
@@ -72,34 +87,6 @@ const deleteMovie = async (id) => {
   }
 };
 
-// window.onload = async () => {
-//   try {
-//     let containerNode = document.querySelector("#movieToEdit");
-//     if (id !== null) {
-//       console.log("id recognised");
-//       getMovieToEdit();
-//     } else {
-//       containerNode.innerHTML = `
-//       <div class="noMovieMessage row  mt-5 d-flex justify-content-center align-items-center p-3">
-//         <p>Please go back and choose a movie to edit.</p>
-//         <a class="btn link" id="backToMenu" href="./index.html">To Menu</a>
-//       </div>`;
-//     }
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-// const getMovieToEdit = async () => {
-//   try {
-//     const response = await fetch(url + "movies" / +id, optionsGet);
-//     const movieToEdit = await response.json();
-//     console.log(movieToEdit), showMovieToEdit(movieToEdit);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
 const addMovie = async () => {
   try {
     const eventToSend = {
@@ -123,6 +110,68 @@ const addMovie = async () => {
     } else {
       alert("Oh no something went wrong...");
     }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// edit movie
+
+const showEditMovieSection = async () => {
+  const addMovie = document.querySelector("#addMovie");
+  addMovie.innerHTML = "";
+  const moviesContainer = document.querySelector("#allMoviesContainer");
+  try {
+    moviesContainer.innerHTML = `
+    <h3 class="text-center">Edit movie here</h3>
+    <form onsubmit="editMovie(); return false" class="editMovieForm">
+              <div class="form-group ">
+                <label for="movieToEditName">Movie Name:</label>
+                <input
+                  type="text"
+                  required
+                  class="form-control"
+                  id="movieToEditName"
+                  placeholder="Name"
+                />
+              </div>
+              <div class="form-group ">
+                <label for="movieToEditDescription">Description:</label>
+                <textarea
+                  class="form-control"
+                  required
+                  id="movieToEditDescription"
+                  rows="3"
+                ></textarea>
+              </div>
+              <div class="form-group  dropdown">
+                <label for="movieToEditCategory">Category:</label>
+                <select
+                  name="category"
+                  class="form-control"
+                  id="movieToEditCategory"
+                  required
+                >
+                  <option value="">--Please choose an option--</option>
+                  <option value="horror">Horror</option>
+                  <option value="comedy">Comedy</option>
+                  <option value="drama">Drama</option>
+                  <option value="action">Action</option>
+                  <option value="musical">Musical</option>
+                  <option value="thriller">Thriller</option>
+                </select>
+              </div>
+              <div class="form-group ">
+                <label for="movieToEditImageUrl">Movie Image Link:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="movieToEditImageUrl"
+                  required
+                />
+              </div>
+              <button class="btn btn-primary mx-auto">Save Movie</button>
+            </form>`;
   } catch (error) {
     console.log(error);
   }

@@ -3,6 +3,7 @@
 //     }
 
 const url = "https://striveschool-api.herokuapp.com/api/movies/";
+let genreArr = [];
 
 const optionsGet = {
   method: "GET",
@@ -12,10 +13,25 @@ const optionsGet = {
   },
 };
 
-// index.html
-// window.onload = async () => {
-//   await getMovies("horror");
-// };
+window.onload = async () => {
+  try {
+    let response = await fetch(url, optionsGet);
+    genreArr = await response.json();
+    showGenres(genreArr);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const showGenres = async (arr) => {
+  const genreDropdown = document.querySelector("#genreDropdown");
+  arr.forEach((genre) => {
+    genreDropdown.innerHTML += `
+      <button class="btn dropdown-item" onclick="getMovies('${genre}')">
+        ${genre}
+      </button>`;
+  });
+};
 
 const getMovies = async (genre) => {
   try {
@@ -43,7 +59,7 @@ const showUserMovies = async (movies, genre) => {
                     <p>${movie.description}</p>
                 </div>
                 <div class="card-footer">
-                <a href="./backOffice.html?id=${movie._id}" class="btn btn-primary goToBackOffice">More</a>
+                <a href="./backOffice.html" class="btn btn-primary goToBackOffice">More</a>
                 </div>
             </div>
         </div>`;

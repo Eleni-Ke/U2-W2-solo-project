@@ -235,3 +235,8 @@ footer.container {
 #allMoviesContainer .movieToEditImg {
   height: 10rem;
 }
+
+.editMovieForm {
+  width: 70%;
+  margin-inline: auto;
+}
