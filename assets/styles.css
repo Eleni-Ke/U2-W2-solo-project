@@ -260,4 +260,5 @@ footer.container {
 .editMovieForm {
   width: 70%;
   margin-inline: auto;
+  padding: 2rem;
 }

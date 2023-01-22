@@ -43,14 +43,14 @@ const getMoviesAndGenre = async () => {
 };
 
 const displayMovies = async (genre, arr) => {
-  if (genre !== "") {
-    try {
-      const moviesContainer = document.querySelector("#allMoviesContainer");
-      moviesContainer.innerHTML += `
+  // if (genre !== "") {
+  try {
+    const moviesContainer = document.querySelector("#allMoviesContainer");
+    moviesContainer.innerHTML += `
       <h3 class="row d-flex justify-content-center genreRowTitle">${genre}</h3>`;
-      arr.forEach((movie) => {
-        console.log("These are the ids:", movie._id, movie.name);
-        moviesContainer.innerHTML += `
+    arr.forEach((movie) => {
+      console.log("These are the ids:", movie._id, movie.name);
+      moviesContainer.innerHTML += `
         <div class="row justify-content-center">
         <img src="${movie.imageUrl}" alt="picture of movie" class="col-2 movieToEditImg" />
         <h6 class="col-4">${movie.name}</h6>
@@ -61,11 +61,11 @@ const displayMovies = async (genre, arr) => {
         </button>
         </div>
         </div>`;
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    });
+  } catch (error) {
+    console.log(error);
   }
+  // }
 };
 
 const deleteMovie = async (id) => {
