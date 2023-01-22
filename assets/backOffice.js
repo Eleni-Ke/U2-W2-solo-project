@@ -47,7 +47,7 @@ const displayMovies = async (genre, arr) => {
     try {
       const moviesContainer = document.querySelector("#allMoviesContainer");
       moviesContainer.innerHTML += `
-      <h3 class="row mt-5 d-flex justify-content-center genreRowTitle">${genre}</h3>`;
+      <h3 class="row d-flex justify-content-center genreRowTitle">${genre}</h3>`;
       arr.forEach((movie) => {
         console.log("These are the ids:", movie._id, movie.name);
         moviesContainer.innerHTML += `

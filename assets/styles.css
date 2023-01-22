@@ -140,11 +140,29 @@ header.container-fluid {
   right: -2rem;
 }
 
-section .row {
-  min-height: 7rem;
+.carousel-inner {
+  z-index: 2;
+  position: relative;
 }
 
-section .col {
+section .row {
+  height: 7rem;
+}
+
+#userMovieRow {
+  height: auto;
+}
+
+#userMovieRow .card {
+  height: 7rem;
+}
+
+#userMovieRow .card:hover {
+  height: auto;
+  color: var(--clr-black);
+}
+
+section .row {
   height: 100%;
 }
 
@@ -190,22 +208,20 @@ footer.container {
   margin-bottom: 0;
 }
 
-#userMovieRow .goToBackOffice {
-  z-index: 2;
-  position: relative;
-}
-
 /* backoffice */
 
 .addMovieContainer .btn {
   font-size: 1.3rem;
   word-spacing: normal;
+  margin: 1rem;
 }
 
 .addMovieContainer .dropdown-menu {
   position: absolute;
   background-color: var(--clr-drk-grey);
   width: 160%;
+  padding: 1rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .addMovieContainer .dropdown-item {
@@ -224,12 +240,17 @@ footer.container {
 }
 
 .genreRowTitle {
-  border-top: 1px solid var(--clr-black);
+  border-top: 2px solid var(--clr-black);
+  padding: 1rem;
 }
 
 #allMoviesContainer {
-  background-color: var(--clr-drk-grey);
+  background-color: var(--clr-grey);
   color: var(--clr-black);
+}
+
+#allMoviesContainer .row {
+  padding-bottom: 2rem;
 }
 
 #allMoviesContainer .movieToEditImg {

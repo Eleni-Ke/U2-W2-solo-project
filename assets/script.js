@@ -55,16 +55,14 @@ const showUserMovies = async (movies, genre) => {
       movies.forEach((movie) => {
         row.innerHTML += `
         <div class="col">
-        <div class="card">
-        <img src="${movie.imageUrl}" alt="${movie.name}"
-        />
-        <div class="card-body">
-        <p>${movie.description}</p>
-        </div>
-        <div class="card-footer">
-        <a href="./backOffice.html" class="btn btn-primary goToBackOffice">More</a>
-        </div>
-        </div>
+          <div class="card">
+            <img src="${movie.imageUrl}" alt="${movie.name}"
+            />
+            <div class="card-body movieDescription">
+              <p>${movie.description}</p>
+              <a href="./backOffice.html" class="btn btn-primary goToBackOffice">More</a>
+            </div>
+          </div>
         </div>`;
       });
     }
