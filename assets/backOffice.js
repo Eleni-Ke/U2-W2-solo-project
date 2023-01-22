@@ -11,7 +11,7 @@ const optionsGet = {
   },
 };
 
-window.onload = async () => {
+window.onload = () => {
   try {
     if (id !== null) {
       console.log("This is the id:" + id);
@@ -43,14 +43,14 @@ const getMoviesAndGenre = async () => {
 };
 
 const displayMovies = async (genre, arr) => {
-  // if (genre !== "") {
-  try {
-    const moviesContainer = document.querySelector("#allMoviesContainer");
-    moviesContainer.innerHTML += `
-      <h3 class="row d-flex justify-content-center genreRowTitle">${genre}</h3>`;
-    arr.forEach((movie) => {
-      console.log("These are the ids:", movie._id, movie.name);
+  if (genre !== "") {
+    try {
+      const moviesContainer = document.querySelector("#allMoviesContainer");
       moviesContainer.innerHTML += `
+      <h3 class="row d-flex justify-content-center genreRowTitle">${genre}</h3>`;
+      arr.forEach((movie) => {
+        console.log("These are the ids:", movie._id, movie.name);
+        moviesContainer.innerHTML += `
         <div class="row justify-content-center">
         <img src="${movie.imageUrl}" alt="picture of movie" class="col-2 movieToEditImg" />
         <h6 class="col-4">${movie.name}</h6>
@@ -61,11 +61,11 @@ const displayMovies = async (genre, arr) => {
         </button>
         </div>
         </div>`;
-    });
-  } catch (error) {
-    console.log(error);
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
-  // }
 };
 
 const deleteMovie = async (id) => {
@@ -153,7 +153,7 @@ const showEditMovieSection = async () => {
                   id="movieToEditCategory"
                   required
                 >
-                  <option value="">--Please choose an option--</option>
+                  <option value="global">--Please choose an option--</option>
                   <option value="horror">Horror</option>
                   <option value="comedy">Comedy</option>
                   <option value="drama">Drama</option>
