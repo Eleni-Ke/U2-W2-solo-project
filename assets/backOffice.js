@@ -53,10 +53,10 @@ const displayMovies = async (genre, arr) => {
         moviesContainer.innerHTML += `
         <div class="row justify-content-center">
         <img src="${movie.imageUrl}" alt="picture of movie" class="col-2 movieToEditImg" />
-        <h6 class="col-4">${movie.name}</h6>
-        <div class="col-3 offset-2 btn-section">
-        <a class="btn btn-light" href="./backOffice.html?id=${movie._id}" >Edit</a>
-        <button class="btn btn-light" onclick="deleteMovie('${movie._id}' )">
+        <h4 class="col-4 my-auto">${movie.name}</h4>
+        <div class="col-3 offset-2 btn-section my-auto">
+        <a class="btn btn-warning" href="./backOffice.html?id=${movie._id}" >Edit</a>
+        <button class="btn btn-danger" onclick="deleteMovie('${movie._id}' )">
         Delete
         </button>
         </div>
